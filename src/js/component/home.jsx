@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useState } from 'react';
+import "/workspaces/MiguelGonzalez_TrafficLight/src/styles/index.css";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+function TrafficLight() {
+    const [color, setColor] = useState("red");
 
-//create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
-};
+    const handleSetColor = (newColor) => {
+        setColor(newColor);
+    };
 
-export default Home;
+    return (
+        <div className="traffic-light-container">
+            {color === "red" ? (
+                <div className={"light red" + (color === "red" ? " glow-red" : "")} onClick={() => handleSetColor("red")}></div>
+            ) : (
+                <div className={"light red"} onClick={() => handleSetColor("red")}></div>
+            )}
+            {color === "yellow" ? (
+                <div className={"light yellow" + (color === "yellow" ? " glow-yellow" : "")} onClick={() => handleSetColor("yellow")}></div>
+            ) : (
+                <div className={"light yellow"} onClick={() => handleSetColor("yellow")}></div>
+            )}
+            {color === "green" ? (
+                <div className={"light green" + (color === "green" ? " glow-green" : "")} onClick={() => handleSetColor("green")}></div>
+            ) : (
+                <div className={"light green"} onClick={() => handleSetColor("green")}></div>
+            )}
+        </div>
+    );
+}
+
+export default TrafficLight;
+
+
